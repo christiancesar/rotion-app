@@ -35,4 +35,5 @@
   "exclude": [
     "node_modules"
   ],
+  "types": ["electron-vite/node"]
 }
