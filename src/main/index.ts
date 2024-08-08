@@ -5,6 +5,7 @@ import icon from '../../resources/icon.ico?asset'
 import { createFileRoute, createURLRoute } from 'electron-router-dom'
 
 import './ipc'
+import './store'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({

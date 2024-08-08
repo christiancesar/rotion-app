@@ -2,4 +2,4 @@ import Store from 'electron-store'
 
 export const store = new Store()
 
-console.log(store.openInEditor())
+console.log(store.path)
