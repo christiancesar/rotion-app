@@ -4,6 +4,8 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.ico?asset'
 import { createFileRoute, createURLRoute } from 'electron-router-dom'
 
+import './ipc'
+
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 900,
