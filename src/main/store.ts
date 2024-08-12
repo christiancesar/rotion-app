@@ -11,6 +11,6 @@ export const store = new Store<StoreType>({
   },
 })
 
-// store.openInEditor()
+store.openInEditor()
 
 // console.log(store.path)

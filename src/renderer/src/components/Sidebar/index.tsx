@@ -6,13 +6,12 @@ import { Profile } from './Profile'
 import { Search } from './Search'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import { useQuery } from '@tanstack/react-query'
-import { IPC } from '../../../../../src/shared/constants/ipc'
 
 export function Sidebar() {
   const isMacOS = process.platform === 'darwin'
 
   const { data } = useQuery({
-    queryKey: [IPC.DOCUMENTS.FETCH_ALL],
+    queryKey: ['documents'],
     queryFn: async () => {
       const response = await window.api.fetchDocuments()
       return response.data
@@ -57,7 +56,10 @@ export function Sidebar() {
             <Navigation.SectionContent>
               {data?.map((document) => {
                 return (
-                  <Navigation.Link key={document.id}>
+                  <Navigation.Link
+                    to={`/documents/${document.id}`}
+                    key={document.id}
+                  >
                     {document.title}
                   </Navigation.Link>
                 )

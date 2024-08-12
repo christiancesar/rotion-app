@@ -24,7 +24,7 @@ ipcMain.handle(
 ipcMain.handle(
   IPC.DOCUMENTS.FETCH,
   async (_, { id }: FetchDocumentRequest): Promise<FetchDocumentResponse> => {
-    const document = store.get<string, DocumentRotion>(`document.${id}`)
+    const document = store.get<string, DocumentRotion>(`documents.${id}`)
 
     return {
       data: document,
@@ -42,7 +42,7 @@ ipcMain.handle(
       title: 'Untitled',
     }
 
-    store.set(`document.${id}`, document)
+    store.set(`documents.${id}`, document)
     return {
       data: document,
     }
