@@ -3,11 +3,11 @@
   "productName": "Rotion",
   "version": "1.0.0",
   "description": "An Electron application with React and TypeScript",
-  "author": "example.com",
+  "author": "rocketseat",
   "homepage": "https://electron-vite.org",
-  "exports": "./out/main/index.js",
+  "main": "./out/main/index.js",
+  "exports  ": "./out/main/index.js",
   "type": "module",
-  "node": ">=18",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
@@ -60,6 +60,7 @@
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vite-tsconfig-paths": "^5.0.0"
   }
 }

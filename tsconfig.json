@@ -1,40 +1,4 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "target": "ES2022",
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable"
-    ],
-    "module": "Node16",
-    "moduleResolution": "Node16",
-    "jsx": "react-jsx",
-    "importHelpers": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "isolatedModules": true,
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@*": ["./src/*"],
-    }
-  },
-  "include": [
-    "src",
-    "src/preload/index.d.ts",
-    "electron.vite.config.*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "types": ["electron-vite/node"]
+  "files": [],
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
 }

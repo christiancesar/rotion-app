@@ -1,5 +1,16 @@
 import Store from 'electron-store'
+import { Document } from '../shared/types/ipc'
 
-export const store = new Store()
+interface StoreType {
+  documents: Record<string, Document>
+}
 
-console.log(store.path)
+export const store = new Store<StoreType>({
+  defaults: {
+    documents: {},
+  },
+})
+
+// store.openInEditor()
+
+// console.log(store.path)

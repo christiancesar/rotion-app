@@ -6,15 +6,16 @@ import { Profile } from './Profile'
 import { Search } from './Search'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import { useQuery } from '@tanstack/react-query'
+import { IPC } from '../../../../../src/shared/constants/ipc'
 
 export function Sidebar() {
   const isMacOS = process.platform === 'darwin'
 
   const { data } = useQuery({
-    queryKey: ['fetch-documents'],
+    queryKey: [IPC.DOCUMENTS.FETCH_ALL],
     queryFn: async () => {
       const response = await window.api.fetchDocuments()
-      return response
+      return response.data
     },
   })
 
@@ -61,10 +62,6 @@ export function Sidebar() {
                   </Navigation.Link>
                 )
               })}
-              <Navigation.Link>Untitled</Navigation.Link>
-              <Navigation.Link>Discover</Navigation.Link>
-              <Navigation.Link>Ignite</Navigation.Link>
-              <Navigation.Link>Rocketseat</Navigation.Link>
             </Navigation.SectionContent>
           </Navigation.Section>
         </Navigation.Root>
