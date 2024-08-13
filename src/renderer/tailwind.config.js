@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import plugin from 'tailwindcss'
+
 module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
@@ -38,5 +41,18 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('tailwind-scrollbar'),
+    require('@tailwindcss/typography'),
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        '.region-drag': {
+          '-webkit-app-region': 'drag',
+        },
+        '.region-no-drag': {
+          '-webkit-app-region': 'no-drag',
+        },
+      })
+    }),
+  ],
 }
