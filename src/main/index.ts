@@ -1,11 +1,13 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
-import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.ico?asset'
+import { electronApp, is, optimizer } from '@electron-toolkit/utils'
+import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import { createFileRoute, createURLRoute } from 'electron-router-dom'
+import path from 'node:path'
+import icon from '../../resources/icon.ico?asset'
 
 import './ipc'
 import './store'
+import { createTray } from './tray'
+import { createShortcuts } from './shortscuts'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -22,10 +24,13 @@ function createWindow(): void {
     },
     ...(process.platform === 'win32' ? { icon } : {}),
     webPreferences: {
-      preload: join(__dirname, '../preload/index.mjs'),
+      preload: path.join(__dirname, '../preload/index.mjs'),
       sandbox: false,
     },
   })
+
+  createTray(mainWindow)
+  createShortcuts(mainWindow)
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
@@ -42,7 +47,7 @@ function createWindow(): void {
   )
 
   const fileRoute = createFileRoute(
-    join(__dirname, '../renderer/index.html'),
+    path.join(__dirname, '../renderer/index.html'),
     'main',
   )
 

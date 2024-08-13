@@ -52,7 +52,7 @@ ipcMain.handle(
 ipcMain.handle(
   IPC.DOCUMENTS.SAVE,
   async (_, { id, title, content }: SaveDocumentRequest): Promise<void> => {
-    store.set(`document.${id}`, { id, title, content })
+    store.set(`documents.${id}`, { id, title, content })
   },
 )
 
@@ -60,6 +60,6 @@ ipcMain.handle(
   IPC.DOCUMENTS.DELETE,
   async (_, { id }: DeleteDocumentRequest): Promise<void> => {
     // @ts-expect-error @ts-ignore (https://github.com/sindresorhus/electron-store/issues/196)
-    store.delete(`document.${id}`)
+    store.delete(`documents.${id}`)
   },
 )
