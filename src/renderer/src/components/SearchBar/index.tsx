@@ -56,7 +56,7 @@ export function SearchBar({ onOpenChange, open }: SearchBarProps) {
           className="w-full bg-transparent focus:outline-none text-sm text-rotion-50 placeholder:text-rotion-200"
         />
       </div>
-      <Command.List className="py-2 max-h-48 scrollbar-thin scrollbar-thumb-rotion-600 scrollbar-track-rotion-800">
+      <Command.List className="py-2 max-h-48 scrollbar-thin scrollbar-thumb-rotion-600 scrollbar-track-rotion-800 overflow-y-scroll">
         <Command.Empty className="py-3 px-4 text-rotion-200 text-sm">
           Nenhum documento encontrado.
         </Command.Empty>
@@ -66,7 +66,8 @@ export function SearchBar({ onOpenChange, open }: SearchBarProps) {
             <Command.Item
               key={document.id}
               onSelect={() => handleOpenDocument(document.id)}
-              className="py-3 px-4 text-rotion-50 text-sm flex items-center gap-2 hover:bg-rotion-700 aria-selected:!bg-rotion-600"
+              title="Open document"
+              className="py-3 px-4 text-rotion-50 text-sm flex items-center gap-2 hover:bg-rotion-700"
             >
               <File className="w-4 h-4" />
               {document.title}

@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: rotion
+appId: com.ccrs.app
+productName: Rotion
 directories:
   buildResources: build
 files:
@@ -31,13 +31,12 @@ dmg:
 linux:
   target:
     - AppImage
-    - snap
     - deb
-  maintainer: electronjs.org
-  category: Utility
+  maintainer: ccrs
+  category: Office
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
-publish:
-  provider: generic
-  url: https://example.com/auto-updates
+# publish:
+#   provider: generic
+#   url: https://example.com/auto-updates

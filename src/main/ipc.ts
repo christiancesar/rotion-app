@@ -1,5 +1,4 @@
 import { ipcMain } from 'electron'
-import { IPC } from '../shared/constants/ipc'
 import {
   CreateDocumentResponse,
   DeleteDocumentRequest,
@@ -8,8 +7,9 @@ import {
   FetchDocumentRequest,
   FetchDocumentResponse,
   SaveDocumentRequest,
-} from '../shared/types/ipc'
-import { store } from './store'
+} from '../shared/types/ipc.js'
+import { IPC } from '../shared/constants/ipc.js'
+import { store } from './store.js'
 import { randomUUID } from 'node:crypto'
 
 ipcMain.handle(

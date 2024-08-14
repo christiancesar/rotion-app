@@ -4,10 +4,10 @@ import { createFileRoute, createURLRoute } from 'electron-router-dom'
 import path from 'node:path'
 import icon from '../../resources/icon.ico?asset'
 
-import './ipc'
-import './store'
-import { createTray } from './tray'
-import { createShortcuts } from './shortscuts'
+import './ipc.js'
+import './store.js'
+import { createTray } from './tray.js'
+import { createShortcuts } from './shortscuts.js'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
