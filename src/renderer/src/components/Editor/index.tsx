@@ -8,6 +8,7 @@ import StarterKit from '@tiptap/starter-kit'
 export interface OnContentUpdatedParams {
   title: string
   content: string
+  headings: { id: string; text: string; level: number }[]
 }
 
 interface EditorProps {
@@ -24,6 +25,7 @@ export function Editor({ content, onContentUpdated }: EditorProps) {
       StarterKit.configure({
         document: false,
       }),
+      // CustomHeading.configure({ levels: [1, 2, 3] }),
       Highlight,
       Typography,
       Placeholder.configure({
@@ -31,17 +33,31 @@ export function Editor({ content, onContentUpdated }: EditorProps) {
         emptyEditorClass:
           'before:content-[attr(data-placeholder)] before:text-gray-500 before:h-0 before:float-left before:pointer-events-none',
       }),
+      // Headers,
     ],
     onUpdate: ({ editor }) => {
-      const contentRegex = /(<h1>(?<title>.+)<\/h1>(?<content>.+)?)/
+      // const contentRegex = /(<h1>(?<title>.+)<\/h1>(?<content>.+)?)/
+      const contentRegex = /<h1>(?<title>.*?)<\/h1>(?<content>.+)?/
       const parsedContent = editor.getHTML().match(contentRegex)?.groups
 
       const title = parsedContent?.title ?? 'Untitled'
       const content = parsedContent?.content ?? ''
 
+      const headings: { id: string; text: string; level: number }[] = []
+      editor.state.doc.descendants((node) => {
+        if (node.type.name.startsWith('heading')) {
+          const level = node.attrs.level
+          const text = node.textContent
+          const id = node.attrs.id
+
+          headings.push({ id, text, level })
+        }
+      })
+
       onContentUpdated({
         title,
         content,
+        headings,
       })
     },
     content,

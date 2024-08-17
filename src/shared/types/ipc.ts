@@ -2,6 +2,7 @@ export interface Document {
   id: string
   title: string
   content?: string
+  headings?: { id: string; text: string; level: number }[]
 }
 
 /**

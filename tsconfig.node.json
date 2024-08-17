@@ -8,9 +8,9 @@
   ],
   "compilerOptions": {
     
-    "module": "NodeNext",
+    "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "composite": true,
     "importHelpers": true,
     "resolveJsonModule": true,
